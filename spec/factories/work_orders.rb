@@ -3,6 +3,6 @@ FactoryBot.define do
     workOrderReference "MyString"
     sorCode "MyString"
     supplierRef "MyString"
-    repair nil
+    repair
   end
 end

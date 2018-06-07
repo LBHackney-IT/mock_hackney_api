@@ -6,6 +6,74 @@
     "description": "This is a working mock API of the Hackney API.\n        It can be used for testing clients, or proposing future changes.\n        DO NOT USE FOR REAL PERSONAL DATA.\n        The source code is available at https://github.com/LBHackney-IT/mock_hackney_api"
   },
   "paths": {
+    "/work_orders/{workOrderReference}/available_appointments": {
+      "get": {
+        "summary": "Retrieves available appointments",
+        "tags": [
+          "Appointments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "workOrderReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "work order found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "metadata": {
+                  "type": "object",
+                  "properties": {
+                    "resultset": {
+                      "type": "object",
+                      "properties": {
+                        "count": {
+                          "type": "integer"
+                        },
+                        "offset": {
+                          "type": "integer"
+                        },
+                        "limit": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "beginDate": {
+                        "type": "string"
+                      },
+                      "endDate": {
+                        "type": "string"
+                      },
+                      "bestSlot": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "work order not found"
+          }
+        }
+      }
+    },
     "/repairs": {
       "post": {
         "summary": "Creates a repair",
