@@ -1,6 +1,8 @@
 class Repair < ApplicationRecord
   has_many :work_orders
 
+  before_validation :set_reference, on: :create
+
   validates :repairRequestReference, presence: true
   validates :propertyReference, presence: true
   validates :problemDescription, presence: true
@@ -24,7 +26,7 @@ class Repair < ApplicationRecord
         emailAddress: self.contact_emailAddress,
         callbackTime: self.contact_callbackTime,
       },
-      work_orders: work_orders.collect do |work_order|
+      workOrders: work_orders.collect do |work_order|
         {
           workOrderReference: work_order.workOrderReference,
           sorCode: work_order.sorCode,
@@ -32,5 +34,10 @@ class Repair < ApplicationRecord
         }
       end
     }
+  end
+
+  private
+  def set_reference
+    self.repairRequestReference = rand(9999999)
   end
 end

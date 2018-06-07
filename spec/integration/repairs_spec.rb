@@ -9,7 +9,7 @@ describe 'repairs API' do
         "$ref": '#/definitions/repair'
       }
 
-      response '201', 'repair created' do
+      response '200', 'repair created' do
         schema '$ref' => '#/definitions/repair'
         let(:repair) {
           {
@@ -23,7 +23,7 @@ describe 'repairs API' do
               emailAddress: "test@test.com",
               callbackTime: "morning"
             },
-            work_orders: [
+            workOrders: [
               {
                 sorCode: "123",
                 supplierRef: "456"

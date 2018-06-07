@@ -8,11 +8,14 @@ class RepairsController < ApplicationController
   def create
     @repair = Repair.new(repair_params)
     @repair.update_contact_details(contact_params)
-    work_orders_params.each do |work_order_params|
-      @repair.work_orders << WorkOrder.new(work_order_params)
+    params[:workOrders].each do |work_order_params|
+      work_order = WorkOrder.new
+      work_order.sorCode = work_order_params[:sorCode]
+      work_order.supplierRef = work_order_params[:supplierRef]
+      @repair.work_orders << work_order
     end
     if @repair.save
-      render json: @repair, status: :created, location: @repair
+      render json: @repair
     else
       render json: @repair.errors, status: :unprocessable_entity
     end
@@ -41,9 +44,5 @@ class RepairsController < ApplicationController
       :emailAddress,
       :callbackTime,
     )
-  end
-
-  def work_orders_params
-    params.permit(work_orders: [:sorCode, :supplierRef])[:work_orders]
   end
 end

@@ -1,7 +1,7 @@
 require 'swagger_helper'
 
 describe 'properties API' do
-  path '/Properties/?postcode={postcode}' do
+  path '/properties/?postcode={postcode}' do
     get 'Finds properties that match a postcode' do
       tags 'Properties'
       produces 'application/json'
@@ -40,7 +40,7 @@ describe 'properties API' do
     end
   end
 
-  path '/Properties/{propertyReference}' do
+  path '/properties/{propertyReference}' do
     get 'Retrieves a property' do
       tags 'Properties'
       produces 'application/json'

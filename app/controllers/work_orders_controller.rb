@@ -33,7 +33,7 @@ class WorkOrdersController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.work_order = @work_order
     if @appointment.save
-      render json: @appointment, status: :created
+      render json: @appointment
     else
       render json: @appointment.errors, status: :unprocessable_entity
     end

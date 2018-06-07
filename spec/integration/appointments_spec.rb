@@ -56,7 +56,7 @@ describe 'appointments API' do
     end
   end
 
-  path '/work_orders/{workOrderReference}/Appointments' do
+  path '/work_orders/{workOrderReference}/appointments' do
     post 'Creates an appointment' do
       tags 'Appointments'
       consumes 'application/json'
@@ -65,7 +65,7 @@ describe 'appointments API' do
         "$ref": '#/definitions/appointment'
       }
 
-      response '201', 'appointment created' do
+      response '200', 'appointment created' do
         schema '$ref' => '#/definitions/appointment'
         let(:appointment) {
           {

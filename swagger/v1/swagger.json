@@ -74,7 +74,7 @@
         }
       }
     },
-    "/work_orders/{workOrderReference}/Appointments": {
+    "/work_orders/{workOrderReference}/appointments": {
       "post": {
         "summary": "Creates an appointment",
         "tags": [
@@ -99,7 +99,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "appointment created",
             "schema": {
               "$ref": "#/definitions/appointment"
@@ -139,7 +139,7 @@
         }
       }
     },
-    "/Properties/?postcode={postcode}": {
+    "/properties/?postcode={postcode}": {
       "get": {
         "summary": "Finds properties that match a postcode",
         "tags": [
@@ -188,7 +188,7 @@
         }
       }
     },
-    "/Properties/{propertyReference}": {
+    "/properties/{propertyReference}": {
       "get": {
         "summary": "Retrieves a property",
         "tags": [
@@ -251,7 +251,7 @@
           }
         ],
         "responses": {
-          "201": {
+          "200": {
             "description": "repair created",
             "schema": {
               "$ref": "#/definitions/repair"
