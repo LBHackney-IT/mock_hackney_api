@@ -22,14 +22,26 @@ describe 'repairs API' do
               telephoneNumber: "07777777777",
               emailAddress: "test@test.com",
               callbackTime: "morning"
-            }
+            },
+            work_orders: [
+              {
+                sorCode: "123",
+                supplierRef: "456"
+              }
+            ]
           }.with_indifferent_access
         }
+        let(:repair_response) {
+          repair_response = repair.dup
+          repair[:work_orders][0][:workOrderReference] = an_instance_of(String)
+          repair_response
+        }
         run_test! do |response|
-          expect(JSON.parse(response.body)).to eq(repair)
+          expect(JSON.parse(response.body)).to match(repair_response)
           repair = Repair.last
           expect(repair.repairRequestReference).to eq("1234")
           expect(repair.contact_name).to eq("name")
+          expect(repair.work_orders.first.sorCode).to eq("123")
         end
       end
 

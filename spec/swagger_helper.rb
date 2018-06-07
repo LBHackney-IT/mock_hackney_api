@@ -32,8 +32,16 @@ RSpec.configure do |config|
             propertyReference: { type: :string },
             problemDescription: { type: :string, example: 'The fan is buzzing' },
             priority: { type: :string },
-            contact: { "$ref": '#/definitions/contact' }
-          }
+            contact: {
+              "$ref": '#/definitions/contact'
+            },
+            work_orders: {
+              type: :array,
+              items: {
+                "$ref": '#/definitions/work_order'
+              },
+            },
+          },
         },
         contact: {
           type: :object,
@@ -42,8 +50,15 @@ RSpec.configure do |config|
             telephoneNumber: { type: :string },
             emailAddress: { type: :string },
             callbackTime: { type: :string },
-          }
-        }
+          },
+        },
+        work_order: {
+          type: :object,
+          properties: {
+            sorCode: { type: :string },
+            supplierRef: { type: :string },
+          },
+        },
       }
     }
   }

@@ -8,6 +8,9 @@ class RepairsController < ApplicationController
   def create
     @repair = Repair.new(repair_params)
     @repair.update_contact_details(contact_params)
+    work_orders_params.each do |work_order_params|
+      @repair.work_orders << WorkOrder.new(work_order_params)
+    end
     if @repair.save
       render json: @repair, status: :created, location: @repair
     else
@@ -38,5 +41,9 @@ class RepairsController < ApplicationController
       :emailAddress,
       :callbackTime,
     )
+  end
+
+  def work_orders_params
+    params.permit(work_orders: [:sorCode, :supplierRef])[:work_orders]
   end
 end

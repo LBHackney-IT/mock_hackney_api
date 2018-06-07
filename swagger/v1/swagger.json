@@ -87,6 +87,12 @@
         },
         "contact": {
           "$ref": "#/definitions/contact"
+        },
+        "work_orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/work_order"
+          }
         }
       }
     },
@@ -103,6 +109,17 @@
           "type": "string"
         },
         "callbackTime": {
+          "type": "string"
+        }
+      }
+    },
+    "work_order": {
+      "type": "object",
+      "properties": {
+        "sorCode": {
+          "type": "string"
+        },
+        "supplierRef": {
           "type": "string"
         }
       }

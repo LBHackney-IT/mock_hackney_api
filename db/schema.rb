@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180607110413) do
+ActiveRecord::Schema.define(version: 20180607124008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,4 +28,15 @@ ActiveRecord::Schema.define(version: 20180607110413) do
     t.string "contact_callbackTime"
   end
 
+  create_table "work_orders", force: :cascade do |t|
+    t.string "workOrderReference"
+    t.string "sorCode"
+    t.string "supplierRef"
+    t.bigint "repair_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["repair_id"], name: "index_work_orders_on_repair_id"
+  end
+
+  add_foreign_key "work_orders", "repairs"
 end

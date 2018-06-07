@@ -1,4 +1,6 @@
 class Repair < ApplicationRecord
+  has_many :work_orders
+
   validates :repairRequestReference, presence: true
   validates :propertyReference, presence: true
   validates :problemDescription, presence: true
@@ -22,6 +24,13 @@ class Repair < ApplicationRecord
         emailAddress: self.contact_emailAddress,
         callbackTime: self.contact_callbackTime,
       },
+      work_orders: work_orders.collect do |work_order|
+        {
+          workOrderReference: work_order.workOrderReference,
+          sorCode: work_order.sorCode,
+          supplierRef: work_order.supplierRef,
+        }
+      end
     }
   end
 end
