@@ -16,8 +16,12 @@ RSpec.configure do |config|
     'v1/swagger.json' => {
       swagger: '2.0',
       info: {
-        title: 'API V1',
-        version: 'v1'
+        title: 'Mock Hackney API',
+        version: 'v1',
+        description: "This is a working mock API of the Hackney API.
+        It can be used for testing clients, or proposing future changes.
+        DO NOT USE FOR REAL PERSONAL DATA.
+        The source code is available at https://github.com/LBHackney-IT/mock_hackney_api"
       },
       paths: {},
       definitions: {
