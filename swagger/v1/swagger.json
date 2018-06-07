@@ -141,7 +141,7 @@
     },
     "/Properties/?postcode={postcode}": {
       "get": {
-        "summary": "Retrieves a request",
+        "summary": "Finds properties that match a postcode",
         "tags": [
           "Properties"
         ],
@@ -184,6 +184,50 @@
           },
           "400": {
             "description": "invalid post code"
+          }
+        }
+      }
+    },
+    "/Properties/{propertyReference}": {
+      "get": {
+        "summary": "Retrieves a property",
+        "tags": [
+          "Properties"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "properties found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "propertyReference": {
+                  "type": "string"
+                },
+                "maintainable": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invalid property reference"
           }
         }
       }

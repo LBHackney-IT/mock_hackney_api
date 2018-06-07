@@ -8,4 +8,12 @@ class PropertiesController < ApplicationController
       render json: {results: @properties}
     end
   end
+
+  def show
+    if @property = Property.find_by_propertyReference(params[:id])
+      render json: @property
+    else
+      render status: :not_found
+    end
+  end
 end

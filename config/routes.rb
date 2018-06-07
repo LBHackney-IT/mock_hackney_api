@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       post :Appointments, action: :create_appointment
     end
   end
+  get '/Properties/:id', to: 'properties#show'
   get '/Properties', to: 'properties#find'
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
