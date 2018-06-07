@@ -7,6 +7,7 @@ class RepairsController < ApplicationController
 
   def create
     @repair = Repair.new(repair_params)
+    @repair.update_contact_details(contact_params)
     if @repair.save
       render json: @repair, status: :created, location: @repair
     else
@@ -22,6 +23,20 @@ class RepairsController < ApplicationController
   end
 
   def repair_params
-    params.require(:repair).permit(:repairRequestReference, :propertyReference, :problemDescription, :priority)
+    params.require(:repair).permit(
+      :repairRequestReference,
+      :propertyReference,
+      :problemDescription,
+      :priority,
+    )
+  end
+
+  def contact_params
+    params.require(:contact).permit(
+      :name,
+      :telephoneNumber,
+      :emailAddress,
+      :callbackTime,
+    )
   end
 end
