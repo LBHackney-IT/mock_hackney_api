@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180607124008) do
+ActiveRecord::Schema.define(version: 20180607143011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "beginDate"
+    t.datetime "endDate"
+    t.bigint "work_order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_order_id"], name: "index_appointments_on_work_order_id"
+  end
 
   create_table "repairs", force: :cascade do |t|
     t.string "repairRequestReference"
@@ -38,5 +47,6 @@ ActiveRecord::Schema.define(version: 20180607124008) do
     t.index ["repair_id"], name: "index_work_orders_on_repair_id"
   end
 
+  add_foreign_key "appointments", "work_orders"
   add_foreign_key "work_orders", "repairs"
 end

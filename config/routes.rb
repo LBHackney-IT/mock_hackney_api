@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :work_orders, only: [] do
     member do
       get :available_appointments
+      get :Appointments, action: :show_appointment
+      post :Appointments, action: :create_appointment
     end
   end
   mount Rswag::Ui::Engine => '/api-docs'

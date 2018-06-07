@@ -59,6 +59,13 @@ RSpec.configure do |config|
             supplierRef: { type: :string },
           },
         },
+        appointment: {
+          type: :object,
+          properties: {
+            beginDate: { type: :string },
+            endDate: { type: :string },
+          },
+        },
       }
     }
   }

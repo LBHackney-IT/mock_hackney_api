@@ -74,6 +74,71 @@
         }
       }
     },
+    "/work_orders/{workOrderReference}/Appointments": {
+      "post": {
+        "summary": "Creates an appointment",
+        "tags": [
+          "Appointments"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "workOrderReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "appointment",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/appointment"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "appointment created",
+            "schema": {
+              "$ref": "#/definitions/appointment"
+            }
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      },
+      "get": {
+        "summary": "Retrieves an appointment",
+        "tags": [
+          "Appointments"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "workOrderReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "appointment found",
+            "schema": {
+              "$ref": "#/definitions/appointment"
+            }
+          },
+          "404": {
+            "description": "repair not found"
+          }
+        }
+      }
+    },
     "/repairs": {
       "post": {
         "summary": "Creates a repair",
@@ -188,6 +253,17 @@
           "type": "string"
         },
         "supplierRef": {
+          "type": "string"
+        }
+      }
+    },
+    "appointment": {
+      "type": "object",
+      "properties": {
+        "beginDate": {
+          "type": "string"
+        },
+        "endDate": {
           "type": "string"
         }
       }
