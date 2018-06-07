@@ -20,6 +20,7 @@ Requires ruby, bundler and postgresql installed.
 
 - `git clone`
 - `bundle install`
+- `bundle exec rake db:setup`
 - `rails s`
 
 You can view the swagger documentation (which allows you to make API calls) at
@@ -36,6 +37,19 @@ in any instance of this Mock API that is not within a protected environment.
 
 If using this for user testing, please ensure testers know to write their
 scripts appropriately, and to inform participants of this.
+
+## Mock Data
+
+Obviously we need to create some fake data for some things to work, here is what
+this Mock API will do:
+
+*Repairs, Work Order & Appointments*: Any repairs created in the system,
+will be returned at the appropiate endpoints
+
+*Properties*: There is no endpoint to create properties. I have created some
+fake properties in `db/seeds.rb`. You can add your own if you like. Finding by
+postcode is done by simply stripping whitespace and doing a case insensitive
+search.
 
 ## Contributing
 

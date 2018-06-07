@@ -139,6 +139,55 @@
         }
       }
     },
+    "/Properties/?postcode={postcode}": {
+      "get": {
+        "summary": "Retrieves a request",
+        "tags": [
+          "Properties"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "postcode",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "properties found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "address": {
+                        "type": "string"
+                      },
+                      "postcode": {
+                        "type": "string"
+                      },
+                      "propertyReference": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid post code"
+          }
+        }
+      }
+    },
     "/repairs": {
       "post": {
         "summary": "Creates a repair",
