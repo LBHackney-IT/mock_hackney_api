@@ -3,13 +3,6 @@ class WorkOrdersController < ApplicationController
 
   def available_appointments
     render json: {
-      metadata: {
-        resultset: {
-          count: 2,
-          offset: 0,
-          limit: 10
-        },
-      },
       results: [
         {
           beginDate: (Date.today.at_beginning_of_week + 7.days + 9.hours).iso8601,

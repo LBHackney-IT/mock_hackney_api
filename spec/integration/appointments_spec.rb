@@ -17,19 +17,6 @@ describe 'appointments API' do
       response '200', 'work order found' do
         schema type: :object,
           properties: {
-            metadata: {
-              type: :object,
-              properties: {
-                resultset: {
-                  type: :object,
-                  properties: {
-                    count: { type: :integer },
-                    offset: { type: :integer },
-                    limit: { type: :integer },
-                  },
-                },
-              },
-            },
             results: {
               type: :array,
               items: {
