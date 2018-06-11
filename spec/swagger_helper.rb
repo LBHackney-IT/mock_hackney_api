@@ -28,12 +28,11 @@ RSpec.configure do |config|
         repair_request: {
           type: :object,
           properties: {
-            propertyReference: { type: :string, example: '000001' },
-            problemDescription: { type: :string, example: 'The fan is buzzing' },
-            priority: { type: :string, example: 'N' },
+            propertyReference: { type: :string, example: '000001', required: true },
+            problemDescription: { type: :string, example: 'The fan is buzzing', required: true },
             priority: { type: :string, example: 'N', pattern: '^[UGINEZVMuginezvm]$', required: true },
             contact: {
-              "$ref": '#/definitions/contact'
+              "$ref": '#/definitions/contact', required: true
             },
             work_orders: {
               type: :array,
@@ -64,8 +63,8 @@ RSpec.configure do |config|
         contact: {
           type: :object,
           properties: {
-            name: { type: :string, example: 'Jon Smith' },
-            telephoneNumber: { type: :string, example: '07777777777' },
+            name: { type: :string, example: 'Jon Smith', required: true },
+            telephoneNumber: { type: :string, example: '07777777777', required: true },
             emailAddress: { type: :string, example: 'test@test.com' },
             callbackTime: { type: :string, example: 'Morning' },
           },
@@ -73,13 +72,13 @@ RSpec.configure do |config|
         work_order_request: {
           type: :object,
           properties: {
-            sorCode: { type: :string },
+            sorCode: { type: :string, required: true },
           },
         },
         work_order: {
           type: :object,
           properties: {
-            sorCode: { type: :string },
+            sorCode: { type: :string, required: true },
             supplierReference: { type: :string, example: 'W1' },
             workOrderReference: { type: :string },
           },
@@ -87,8 +86,8 @@ RSpec.configure do |config|
         appointment: {
           type: :object,
           properties: {
-            beginDate: { type: :string, example: '2018-06-18T09:00:00Z' },
-            endDate: { type: :string, example: '2018-06-18T10:00:00Z' },
+            beginDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            endDate: { type: :string, example: '2018-06-18T10:00:00Z', format: 'date-time' },
           },
         },
       }

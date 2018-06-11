@@ -281,21 +281,23 @@
       "properties": {
         "propertyReference": {
           "type": "string",
-          "example": "000001"
+          "example": "000001",
+          "required": true
         },
         "problemDescription": {
           "type": "string",
-          "example": "The fan is buzzing"
+          "example": "The fan is buzzing",
+          "required": true
         },
         "priority": {
           "type": "string",
-          "example": "N"
           "example": "N",
           "pattern": "^[UGINEZVMuginezvm]$",
           "required": true
         },
         "contact": {
-          "$ref": "#/definitions/contact"
+          "$ref": "#/definitions/contact",
+          "required": true
         },
         "work_orders": {
           "type": "array",
@@ -339,11 +341,13 @@
       "properties": {
         "name": {
           "type": "string",
-          "example": "Jon Smith"
+          "example": "Jon Smith",
+          "required": true
         },
         "telephoneNumber": {
           "type": "string",
-          "example": "07777777777"
+          "example": "07777777777",
+          "required": true
         },
         "emailAddress": {
           "type": "string",
@@ -359,7 +363,8 @@
       "type": "object",
       "properties": {
         "sorCode": {
-          "type": "string"
+          "type": "string",
+          "required": true
         }
       }
     },
@@ -383,11 +388,13 @@
       "properties": {
         "beginDate": {
           "type": "string",
-          "example": "2018-06-18T09:00:00Z"
+          "example": "2018-06-18T09:00:00Z",
+          "format": "date-time"
         },
         "endDate": {
           "type": "string",
-          "example": "2018-06-18T10:00:00Z"
+          "example": "2018-06-18T10:00:00Z",
+          "format": "date-time"
         }
       }
     }
