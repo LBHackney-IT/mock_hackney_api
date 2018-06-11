@@ -30,7 +30,7 @@ class Repair < ApplicationRecord
         {
           workOrderReference: work_order.workOrderReference,
           sorCode: work_order.sorCode,
-          supplierRef: work_order.supplierRef,
+          supplierReference: work_order.supplierRef,
         }
       end
     }
