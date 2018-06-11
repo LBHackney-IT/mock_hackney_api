@@ -7,5 +7,6 @@ class WorkOrder < ApplicationRecord
   private
   def set_reference
     self.workOrderReference = rand(9999999)
+    self.supplierRef = "W1"
   end
 end
