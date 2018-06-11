@@ -23,6 +23,7 @@ RSpec.configure do |config|
         DO NOT USE FOR REAL PERSONAL DATA.
         The source code is available at https://github.com/LBHackney-IT/mock_hackney_api"
       },
+      basePath: '/hackneyrepairs/v1',
       paths: {},
       definitions: {
         repair_request: {
