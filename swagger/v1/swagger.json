@@ -366,7 +366,7 @@
         "sorCode": {
           "type": "string"
         },
-        "supplierRef": {
+        "supplierReference": {
           "type": "string",
           "example": "W1"
         },

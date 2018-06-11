@@ -79,7 +79,7 @@ RSpec.configure do |config|
           type: :object,
           properties: {
             sorCode: { type: :string },
-            supplierRef: { type: :string, example: 'W1' },
+            supplierReference: { type: :string, example: 'W1' },
             workOrderReference: { type: :string },
           },
         },
