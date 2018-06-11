@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <a href="/api-docs">Swagger API documentation</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h3>5 most recent repair requests</h3>
+      <% @repairs.each do |repair| %>
+        <div class="card">
+          <div class="card-body">
+            <dl>
+              <dt>Repair Reference:</dt>
+              <dd><%= repair.repairRequestReference %></dd>
+              <dt>Property ref:</dt>
+              <dd><%= repair.propertyReference %></dd>
+              <dt>Description:</dt>
+              <dd><%= repair.problemDescription %></dd>
+              <dt>Priority:</dt>
+              <dd><%= repair.priority %></dd>
+              <dt>Name:</dt>
+              <dd><%= repair.contact_name %></dd>
+              <dt>Phone number:</dt>
+              <dd><%= repair.contact_telephoneNumber %></dd>
+              <dt>Email:</dt>
+              <dd><%= repair.contact_emailAddress %></dd>
+              <dt>Callback:</dt>
+              <dd><%= repair.contact_callbackTime %></dd>
+              <% if work_order = repair.work_orders.first %>
+                <dt>Work Order Ref:</dt>
+                <dd><%= work_order.workOrderReference %></dd>
+                <dt>Supplier Ref:</dt>
+                <dd><%= work_order.supplierRef %></dd>
+                <dt>SOR Code:</dt>
+                <dd><%= work_order.sorCode %></dd>
+                <% if work_order.appointment %>
+                  <dt>Appointment:</dt>
+                  <dd><%= work_order.appointment.beginDate %> - <%= work_order.appointment.endDate %></dd>
+                <% end %>
+              <% end %>
+            </dl>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <h3>5 most recent properties</h3>
+      <% @properties.each do |property| %>
+        <div class="card">
+          <div class="card-body">
+            <dl>
+              <dt>Reference</dt>
+              <dd><%= property.propertyReference %></dd>
+              <dt>Address</dt>
+              <dd><%= property.address %></dd>
+              <dt>Post Code</dt>
+              <dd><%= property.postcode %></dd>
+              <dt>Maintainable</dt>
+              <dd><%= property.maintainable %></dd>
+            </dl>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
