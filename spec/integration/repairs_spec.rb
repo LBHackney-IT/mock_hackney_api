@@ -13,7 +13,6 @@ describe 'repairs API' do
         schema '$ref' => '#/definitions/repair'
         let(:repair) {
           {
-            repairRequestReference: "1234",
             propertyReference: "5678",
             problemDescription: "broken",
             priority: "N",
@@ -26,20 +25,21 @@ describe 'repairs API' do
             workOrders: [
               {
                 sorCode: "123",
-                supplierRef: "456"
               }
             ]
           }.with_indifferent_access
         }
         let(:repair_response) {
           repair_response = repair.dup
-          repair[:work_orders][0][:workOrderReference] = an_instance_of(String)
+          repair_response[:workOrders][0][:workOrderReference] = an_instance_of(String)
+          repair_response[:workOrders][0][:supplierReference] = "W1"
+          repair_response[:repairRequestReference] = an_instance_of(String)
           repair_response
         }
         run_test! do |response|
           expect(JSON.parse(response.body)).to match(repair_response)
           repair = Repair.last
-          expect(repair.repairRequestReference).to eq("1234")
+          expect(repair.problemDescription).to eq("broken")
           expect(repair.contact_name).to eq("name")
           expect(repair.work_orders.first.sorCode).to eq("123")
         end
