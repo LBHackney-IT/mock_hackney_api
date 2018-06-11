@@ -11,7 +11,6 @@ class RepairsController < ApplicationController
     params[:workOrders].each do |work_order_params|
       work_order = WorkOrder.new
       work_order.sorCode = work_order_params[:sorCode]
-      work_order.supplierRef = work_order_params[:supplierRef]
       @repair.work_orders << work_order
     end
     if @repair.save
