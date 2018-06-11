@@ -31,6 +31,7 @@ RSpec.configure do |config|
             propertyReference: { type: :string, example: '000001' },
             problemDescription: { type: :string, example: 'The fan is buzzing' },
             priority: { type: :string, example: 'N' },
+            priority: { type: :string, example: 'N', pattern: '^[UGINEZVMuginezvm]$', required: true },
             contact: {
               "$ref": '#/definitions/contact'
             },

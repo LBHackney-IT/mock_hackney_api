@@ -2,11 +2,12 @@ class Repair < ApplicationRecord
   has_many :work_orders
 
   before_validation :set_reference, on: :create
+  before_validation :capitalise_priority
 
   validates :repairRequestReference, presence: true
   validates :propertyReference, presence: true
   validates :problemDescription, presence: true
-  validates :priority, presence: true
+  validates :priority, presence: true, inclusion: { in: %w{U G I N E Z V M} }
 
   def update_contact_details(contact_params)
     contact_params.each_pair do |key, value|
@@ -39,5 +40,9 @@ class Repair < ApplicationRecord
   private
   def set_reference
     self.repairRequestReference = rand(9999999)
+  end
+
+  def capitalise_priority
+    self.priority = self.priority.upcase
   end
 end

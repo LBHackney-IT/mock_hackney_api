@@ -15,7 +15,7 @@ describe 'repairs API' do
           {
             propertyReference: "5678",
             problemDescription: "broken",
-            priority: "N",
+            priority: "n",
             contact: {
               name: "name",
               telephoneNumber: "07777777777",
@@ -34,6 +34,7 @@ describe 'repairs API' do
           repair_response[:workOrders][0][:workOrderReference] = an_instance_of(String)
           repair_response[:workOrders][0][:supplierReference] = "W1"
           repair_response[:repairRequestReference] = an_instance_of(String)
+          repair_response[:priority] = "N"
           repair_response
         }
         run_test! do |response|
@@ -46,7 +47,24 @@ describe 'repairs API' do
       end
 
       response '422', 'invalid request' do
-        let(:repair) { { repairRequestReference: 1234 } }
+        let(:repair) {
+          {
+            propertyReference: "5678",
+            problemDescription: "broken",
+            priority: "a",
+            contact: {
+              name: "name",
+              telephoneNumber: "07777777777",
+              emailAddress: "test@test.com",
+              callbackTime: "morning"
+            },
+            workOrders: [
+              {
+                sorCode: "123",
+              }
+            ]
+          }.with_indifferent_access
+        }
         run_test!
       end
     end

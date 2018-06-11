@@ -290,6 +290,9 @@
         "priority": {
           "type": "string",
           "example": "N"
+          "example": "N",
+          "pattern": "^[UGINEZVMuginezvm]$",
+          "required": true
         },
         "contact": {
           "$ref": "#/definitions/contact"
