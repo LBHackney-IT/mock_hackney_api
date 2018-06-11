@@ -246,7 +246,7 @@
             "name": "repair",
             "in": "body",
             "schema": {
-              "$ref": "#/definitions/repair"
+              "$ref": "#/definitions/repair_request"
             }
           }
         ],
@@ -295,6 +295,32 @@
     }
   },
   "definitions": {
+    "repair_request": {
+      "type": "object",
+      "properties": {
+        "propertyReference": {
+          "type": "string",
+          "example": "000001"
+        },
+        "problemDescription": {
+          "type": "string",
+          "example": "The fan is buzzing"
+        },
+        "priority": {
+          "type": "string",
+          "example": "N"
+        },
+        "contact": {
+          "$ref": "#/definitions/contact"
+        },
+        "work_orders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/work_order_request"
+          }
+        }
+      }
+    },
     "repair": {
       "type": "object",
       "properties": {
@@ -302,14 +328,16 @@
           "type": "string"
         },
         "propertyReference": {
-          "type": "string"
+          "type": "string",
+          "example": "000001"
         },
         "problemDescription": {
           "type": "string",
           "example": "The fan is buzzing"
         },
         "priority": {
-          "type": "string"
+          "type": "string",
+          "example": "N"
         },
         "contact": {
           "$ref": "#/definitions/contact"
@@ -326,15 +354,27 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "example": "Jon Smith"
         },
         "telephoneNumber": {
-          "type": "string"
+          "type": "string",
+          "example": "07777777777"
         },
         "emailAddress": {
-          "type": "string"
+          "type": "string",
+          "example": "test@test.com"
         },
         "callbackTime": {
+          "type": "string",
+          "example": "Morning"
+        }
+      }
+    },
+    "work_order_request": {
+      "type": "object",
+      "properties": {
+        "sorCode": {
           "type": "string"
         }
       }
@@ -346,6 +386,10 @@
           "type": "string"
         },
         "supplierRef": {
+          "type": "string",
+          "example": "W1"
+        },
+        "workOrderReference": {
           "type": "string"
         }
       }
@@ -354,10 +398,12 @@
       "type": "object",
       "properties": {
         "beginDate": {
-          "type": "string"
+          "type": "string",
+          "example": "2018-06-18T09:00:00Z"
         },
         "endDate": {
-          "type": "string"
+          "type": "string",
+          "example": "2018-06-18T10:00:00Z"
         }
       }
     }

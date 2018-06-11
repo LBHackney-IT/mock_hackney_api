@@ -25,13 +25,30 @@ RSpec.configure do |config|
       },
       paths: {},
       definitions: {
+        repair_request: {
+          type: :object,
+          properties: {
+            propertyReference: { type: :string, example: '000001' },
+            problemDescription: { type: :string, example: 'The fan is buzzing' },
+            priority: { type: :string, example: 'N' },
+            contact: {
+              "$ref": '#/definitions/contact'
+            },
+            work_orders: {
+              type: :array,
+              items: {
+                "$ref": '#/definitions/work_order_request'
+              },
+            },
+          },
+        },
         repair: {
           type: :object,
           properties: {
             repairRequestReference: { type: :string },
-            propertyReference: { type: :string },
+            propertyReference: { type: :string, example: '000001' },
             problemDescription: { type: :string, example: 'The fan is buzzing' },
-            priority: { type: :string },
+            priority: { type: :string, example: 'N' },
             contact: {
               "$ref": '#/definitions/contact'
             },
@@ -46,24 +63,31 @@ RSpec.configure do |config|
         contact: {
           type: :object,
           properties: {
-            name: { type: :string },
-            telephoneNumber: { type: :string },
-            emailAddress: { type: :string },
-            callbackTime: { type: :string },
+            name: { type: :string, example: 'Jon Smith' },
+            telephoneNumber: { type: :string, example: '07777777777' },
+            emailAddress: { type: :string, example: 'test@test.com' },
+            callbackTime: { type: :string, example: 'Morning' },
+          },
+        },
+        work_order_request: {
+          type: :object,
+          properties: {
+            sorCode: { type: :string },
           },
         },
         work_order: {
           type: :object,
           properties: {
             sorCode: { type: :string },
-            supplierRef: { type: :string },
+            supplierRef: { type: :string, example: 'W1' },
+            workOrderReference: { type: :string },
           },
         },
         appointment: {
           type: :object,
           properties: {
-            beginDate: { type: :string },
-            endDate: { type: :string },
+            beginDate: { type: :string, example: '2018-06-18T09:00:00Z' },
+            endDate: { type: :string, example: '2018-06-18T10:00:00Z' },
           },
         },
       }

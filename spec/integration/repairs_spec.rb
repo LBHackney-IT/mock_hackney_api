@@ -6,7 +6,7 @@ describe 'repairs API' do
       tags 'Repairs'
       consumes 'application/json'
       parameter name: :repair, in: :body, schema: {
-        "$ref": '#/definitions/repair'
+        "$ref": '#/definitions/repair_request'
       }
 
       response '200', 'repair created' do
