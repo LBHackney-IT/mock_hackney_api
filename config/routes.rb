@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     end
     get '/properties/:id', to: 'properties#show'
     get '/properties', to: 'properties#find'
+    get '/properties/:id/estate', to: 'properties#estate'
+    get '/properties/:id/block', to: 'properties#block'
   end
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'

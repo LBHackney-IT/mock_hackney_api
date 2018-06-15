@@ -5,6 +5,7 @@
     "version": "v1",
     "description": "This is a working mock API of the Hackney API.\n        It can be used for testing clients, or proposing future changes.\n        DO NOT USE FOR REAL PERSONAL DATA.\n        The source code is available at https://github.com/LBHackney-IT/mock_hackney_api"
   },
+  "basePath": "/hackneyrepairs/v1",
   "paths": {
     "/work_orders/{workOrderReference}/available_appointments": {
       "get": {
@@ -122,7 +123,7 @@
     },
     "/properties/?postcode={postcode}": {
       "get": {
-        "summary": "Finds properties that match a postcode",
+        "summary": "Finds dwellings that match a postcode",
         "tags": [
           "Properties"
         ],
@@ -203,6 +204,124 @@
                 },
                 "maintainable": {
                   "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invalid property reference"
+          }
+        }
+      }
+    },
+    "/properties/{propertyReference}/block": {
+      "get": {
+        "summary": "Retrieves a block for a property",
+        "tags": [
+          "Proposed"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "properties found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "propertyReference": {
+                  "type": "string"
+                },
+                "maintainable": {
+                  "type": "boolean"
+                },
+                "managerName": {
+                  "type": "string"
+                },
+                "managerPhone": {
+                  "type": "string"
+                },
+                "managerEmail": {
+                  "type": "string"
+                },
+                "floors": {
+                  "type": "integer"
+                },
+                "entranceDoors": {
+                  "type": "integer"
+                },
+                "lifts": {
+                  "type": "integer"
+                },
+                "heating": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invalid property reference"
+          }
+        }
+      }
+    },
+    "/properties/{propertyReference}/estate": {
+      "get": {
+        "summary": "Retrieves an estate for a property",
+        "tags": [
+          "Proposed"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "properties found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "address": {
+                  "type": "string"
+                },
+                "postcode": {
+                  "type": "string"
+                },
+                "propertyReference": {
+                  "type": "string"
+                },
+                "maintainable": {
+                  "type": "boolean"
+                },
+                "managerName": {
+                  "type": "string"
+                },
+                "managerPhone": {
+                  "type": "string"
+                },
+                "managerEmail": {
+                  "type": "string"
                 }
               }
             }
@@ -372,7 +491,8 @@
       "type": "object",
       "properties": {
         "sorCode": {
-          "type": "string"
+          "type": "string",
+          "required": true
         },
         "supplierReference": {
           "type": "string",

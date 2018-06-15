@@ -1,8 +1,9 @@
 FactoryBot.define do
-  factory :property do
+  factory :dwelling do
     address "MyString"
     postcode "MyString"
     propertyReference "MyString"
     maintainable false
+    sub_block
   end
 end
