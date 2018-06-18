@@ -26,6 +26,10 @@ class PropertiesController < ApplicationController
     render json: { residents: @property.residents }
   end
 
+  def repairs
+    render json: { repairs: Repair.where(propertyReference: @property.propertyReference).all }
+  end
+
   private
 
   def find_property

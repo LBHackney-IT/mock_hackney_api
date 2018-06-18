@@ -80,3 +80,35 @@ Resident.create!(
   last_call: 900.days.ago,
   dwelling: dwelling2
 )
+Repair.create!(
+  propertyReference: dwelling1.propertyReference,
+  problemDescription: "Broken light",
+  priority: 'I',
+  contact_name: 'Bob Smith',
+  contact_telephoneNumber: '07777777777',
+  contact_emailAddress: 'bob@test.com'
+)
+Repair.create!(
+  propertyReference: dwelling1.propertyReference,
+  problemDescription: "Leak",
+  priority: 'E',
+  contact_name: 'Jane Smith',
+  contact_telephoneNumber: '07777777777',
+  contact_emailAddress: 'jane@test.com'
+)
+Repair.create!(
+  propertyReference: dwelling1.propertyReference,
+  problemDescription: "Mould",
+  priority: 'I',
+  contact_name: 'Bob Smith',
+  contact_telephoneNumber: '07777777777',
+  contact_emailAddress: 'bob@test.com'
+)
+Repair.create!(
+  propertyReference: dwelling2.propertyReference,
+  problemDescription: "Broken light",
+  priority: 'I',
+  contact_name: 'Bob Doe',
+  contact_telephoneNumber: '07777777777',
+  contact_emailAddress: 'bob@test.com'
+)
