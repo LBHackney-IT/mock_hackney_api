@@ -38,33 +38,45 @@ sub_block2 = SubBlock.create!(
   propertyReference: 'S00002',
   block: block,
 )
-Dwelling.create!([
-  {
-    address: '1 Estate House',
-    postcode: 'E5 8TE',
-    propertyReference: '000001',
-    maintainable: true,
-    sub_block: sub_block1,
-  },
-  {
-    address: '2 Estate House',
-    postcode: 'E5 8TE',
-    propertyReference: '000002',
-    maintainable: true,
-    sub_block: sub_block1,
-  },
-  {
-    address: '3 Estate House',
-    postcode: 'E5 8TE',
-    propertyReference: '000003',
-    maintainable: false,
-    sub_block: sub_block2,
-  },
-  {
-    address: '4 Estate House',
-    postcode: 'E5 8TE',
-    propertyReference: '000004',
-    maintainable: false,
-    sub_block: sub_block2,
-  },
-])
+dwelling1 = Dwelling.create!(
+  address: '1 Estate House',
+  postcode: 'E5 8TE',
+  propertyReference: '000001',
+  maintainable: true,
+  sub_block: sub_block1,
+)
+dwelling2 = Dwelling.create!(
+  address: '2 Estate House',
+  postcode: 'E5 8TE',
+  propertyReference: '000002',
+  maintainable: true,
+  sub_block: sub_block1,
+)
+dwelling3 = Dwelling.create!(
+  address: '3 Estate House',
+  postcode: 'E5 8TE',
+  propertyReference: '000003',
+  maintainable: false,
+  sub_block: sub_block2,
+)
+dwelling4 = Dwelling.create!(
+  address: '4 Estate House',
+  postcode: 'E5 8TE',
+  propertyReference: '000004',
+  maintainable: false,
+  sub_block: sub_block2,
+)
+Resident.create!(
+  name: "Bob Smith",
+  last_call: 5.days.ago,
+  dwelling: dwelling1
+)
+Resident.create!(
+  name: "Jane Smith",
+  dwelling: dwelling1
+)
+Resident.create!(
+  name: "Bob Doe",
+  last_call: 900.days.ago,
+  dwelling: dwelling2
+)

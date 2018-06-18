@@ -22,6 +22,10 @@ class PropertiesController < ApplicationController
     render json: @property.estate
   end
 
+  def residents
+    render json: { residents: @property.residents }
+  end
+
   private
 
   def find_property

@@ -148,4 +148,56 @@ describe 'properties API' do
       end
     end
   end
+
+
+  path '/properties/{propertyReference}/residents' do
+    get 'Retrieves the residents for a dwelling' do
+      tags 'Proposed'
+      produces 'application/json'
+      parameter name: :propertyReference, :in => :path, :type => :string
+
+      response '200', 'properties found' do
+        schema type: :object,
+          properties: {
+            residents: {
+              type: :array,
+              items: {
+                type: :object,
+                properties: {
+                  residentReference: { type: :string },
+                  name: { type: :string },
+                  last_call: { type: :string },
+                },
+              },
+            },
+          }
+        let(:property) {
+          create(:dwelling, propertyReference: "000023")
+        }
+        let(:resident1) {
+          create(:resident, dwelling: property)
+        }
+        let(:resident2) {
+          create(:resident, dwelling: property)
+        }
+        let(:propertyReference) {
+          property.propertyReference
+        }
+        before do
+          resident1
+          resident2
+        end
+        run_test! do |response|
+          expect(response.body).to eq({
+            residents: [resident1, resident2]
+          }.to_json)
+        end
+      end
+
+      response '404', 'invalid property reference' do
+        let(:propertyReference) { 'invalid' }
+        run_test!
+      end
+    end
+  end
 end

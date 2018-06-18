@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180615114912) do
+ActiveRecord::Schema.define(version: 20180618083425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 20180615114912) do
     t.string "contact_telephoneNumber"
     t.string "contact_emailAddress"
     t.string "contact_callbackTime"
+  end
+
+  create_table "residents", force: :cascade do |t|
+    t.bigint "dwelling_id"
+    t.string "residentReference"
+    t.string "name"
+    t.datetime "last_call"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dwelling_id"], name: "index_residents_on_dwelling_id"
   end
 
   create_table "work_orders", force: :cascade do |t|

@@ -332,6 +332,55 @@
         }
       }
     },
+    "/properties/{propertyReference}/residents": {
+      "get": {
+        "summary": "Retrieves the residents for a dwelling",
+        "tags": [
+          "Proposed"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "properties found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "residents": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "residentReference": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "last_call": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invalid property reference"
+          }
+        }
+      }
+    },
     "/repairs": {
       "post": {
         "summary": "Creates a repair",
