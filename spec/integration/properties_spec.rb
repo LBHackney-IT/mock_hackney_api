@@ -56,6 +56,11 @@ describe 'properties API' do
             postcode: { type: :string },
             propertyReference: { type: :string },
             maintainable: { type: :boolean },
+            floor: { type: :integer },
+            residents: { type: :integer },
+            heating: { type: :string },
+            toilets: { type: :integer },
+            bathrooms: { type: :integer },
           }
         let(:property) {
           create(:dwelling, propertyReference: "000023")

@@ -204,6 +204,21 @@
                 },
                 "maintainable": {
                   "type": "boolean"
+                },
+                "floor": {
+                  "type": "integer"
+                },
+                "residents": {
+                  "type": "integer"
+                },
+                "heating": {
+                  "type": "string"
+                },
+                "toilets": {
+                  "type": "integer"
+                },
+                "bathrooms": {
+                  "type": "integer"
                 }
               }
             }
@@ -370,6 +385,44 @@
                         "type": "string"
                       }
                     }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "invalid property reference"
+          }
+        }
+      }
+    },
+    "/properties/{propertyReference}/repairs": {
+      "get": {
+        "summary": "Retrieves the repairs for a property",
+        "tags": [
+          "Proposed"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "properties found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "residents": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/repair"
                   }
                 }
               }

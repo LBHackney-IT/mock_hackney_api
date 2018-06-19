@@ -44,6 +44,10 @@ dwelling1 = Dwelling.create!(
   propertyReference: '000001',
   maintainable: true,
   sub_block: sub_block1,
+  floor: 1,
+  heating: 'Boiler',
+  toilets: 1,
+  bathrooms: 1,
 )
 dwelling2 = Dwelling.create!(
   address: '2 Estate House',
