@@ -73,46 +73,131 @@ dwelling4 = Dwelling.create!(
 Resident.create!(
   name: "Bob Smith",
   last_call: 5.days.ago,
-  dwelling: dwelling1
+  dwelling: dwelling1,
 )
 Resident.create!(
   name: "Jane Smith",
-  dwelling: dwelling1
+  dwelling: dwelling1,
 )
 Resident.create!(
   name: "Bob Doe",
   last_call: 900.days.ago,
-  dwelling: dwelling2
+  dwelling: dwelling2,
 )
-Repair.create!(
+repair1 = Repair.create!(
   propertyReference: dwelling1.propertyReference,
   problemDescription: "Broken light",
   priority: 'I',
   contact_name: 'Bob Smith',
   contact_telephoneNumber: '07777777777',
-  contact_emailAddress: 'bob@test.com'
+  contact_emailAddress: 'bob@test.com',
 )
-Repair.create!(
+repair2 = Repair.create!(
   propertyReference: dwelling1.propertyReference,
   problemDescription: "Leak",
   priority: 'E',
   contact_name: 'Jane Smith',
   contact_telephoneNumber: '07777777777',
-  contact_emailAddress: 'jane@test.com'
+  contact_emailAddress: 'jane@test.com',
 )
-Repair.create!(
+repair3 = Repair.create!(
   propertyReference: dwelling1.propertyReference,
   problemDescription: "Mould",
   priority: 'I',
   contact_name: 'Bob Smith',
   contact_telephoneNumber: '07777777777',
-  contact_emailAddress: 'bob@test.com'
+  contact_emailAddress: 'bob@test.com',
 )
-Repair.create!(
+repair4 = Repair.create!(
   propertyReference: dwelling2.propertyReference,
   problemDescription: "Broken light",
   priority: 'I',
   contact_name: 'Bob Doe',
   contact_telephoneNumber: '07777777777',
-  contact_emailAddress: 'bob@test.com'
+  contact_emailAddress: 'bob@test.com',
+)
+work_order1 = WorkOrder.create!(
+  repair: repair1,
+  sorCode: '20040020',
+  supplierReference: 'W1',
+  workOrderReference: '9000000',
+  estimatedCost: 9.99,
+  repairType: 'Community Hall Repairs',
+  status: 'Completed',
+  dueDate: 5.days.ago,
+  expectedCompletion: 6.days.ago,
+  attendedDate: 6.days.ago,
+  attendedBy: 'Geoff Smith',
+  outcome: 'Job Physically Complete',
+  cancelledDate: nil
+)
+task1 = Task.create!(
+  work_order: work_order1,
+  sorCode: '20040020',
+  supplierReference: 'W1',
+  estimatedCost: 9.99,
+  trade: 'PLM',
+  completedDate: 6.days.ago,
+  dueDate: 5.days.ago,
+  description: 'Repair/ease and adjust any door, ease furniture, oil locks, hinges, leave in working order including replacement [straight swap not requiring repair to door] of up to two of the following. Incliuding take off/refix door if required. Medium steel butt hinges, rim latch, mortice latch, rebated mortice latch, night latch, mortice dead lock, lever furniture, overhead door closer, perko door closer. Gerda lock change - excluding work to additional doors, door replacement, re-hang on opposite way, replace threshold. Make good decorations restricted to Primed'
+)
+work_order2 = WorkOrder.create!(
+  repair: repair2,
+  sorCode: '20090190',
+  supplierReference: 'W1',
+  workOrderReference: '9000001',
+  estimatedCost: 19.99,
+  repairType: 'Community Hall Repairs',
+  status: 'Cancelled',
+  dueDate: 5.days.ago,
+  expectedCompletion: 6.days.ago,
+  attendedDate: 6.days.ago,
+  attendedBy: 'Geoff Smith',
+  outcome: 'Job Physically Complete',
+  cancelledDate: nil
+)
+task2 = Task.create!(
+  work_order: work_order1,
+  sorCode: '20040020',
+  supplierReference: 'W1',
+  estimatedCost: 9.99,
+  trade: 'PLM',
+  completedDate: 6.days.ago,
+  dueDate: 5.days.ago,
+  description: 'Repair/ease and adjust any door, ease furniture, oil locks, hinges, leave in working order including replacement [straight swap not requiring repair to door] of up to two of the following. Incliuding take off/refix door if required. Medium steel butt hinges, rim latch, mortice latch, rebated mortice latch, night latch, mortice dead lock, lever furniture, overhead door closer, perko door closer. Gerda lock change - excluding work to additional doors, door replacement, re-hang on opposite way, replace threshold. Make good decorations restricted to Primed'
+)
+task3 = Task.create!(
+  work_order: work_order1,
+  sorCode: '20040020',
+  supplierReference: 'W1',
+  estimatedCost: 10,
+  trade: 'PLM',
+  completedDate: 6.days.ago,
+  dueDate: 5.days.ago,
+  description: 'Repair/ease and adjust any door, ease furniture, oil locks, hinges, leave in working order including replacement [straight swap not requiring repair to door] of up to two of the following. Incliuding take off/refix door if required. Medium steel butt hinges, rim latch, mortice latch, rebated mortice latch, night latch, mortice dead lock, lever furniture, overhead door closer, perko door closer. Gerda lock change - excluding work to additional doors, door replacement, re-hang on opposite way, replace threshold. Make good decorations restricted to Primed'
+)
+work_order3 = WorkOrder.create!(
+  repair: repair1,
+  sorCode: '20040020',
+  supplierReference: 'W1',
+  workOrderReference: '9000000',
+  estimatedCost: 9.99,
+  repairType: 'Community Hall Repairs',
+  status: 'Completed',
+  dueDate: 5.days.ago,
+  expectedCompletion: 6.days.ago,
+  attendedDate: 6.days.ago,
+  attendedBy: 'Geoff Smith',
+  outcome: 'Job Physically Complete',
+  cancelledDate: nil
+)
+task4 = Task.create!(
+  work_order: work_order3,
+  sorCode: '20040020',
+  supplierReference: 'W1',
+  estimatedCost: 9.99,
+  trade: 'PLM',
+  completedDate: 6.days.ago,
+  dueDate: 5.days.ago,
+  description: 'Repair/ease and adjust any door, ease furniture, oil locks, hinges, leave in working order including replacement [straight swap not requiring repair to door] of up to two of the following. Incliuding take off/refix door if required. Medium steel butt hinges, rim latch, mortice latch, rebated mortice latch, night latch, mortice dead lock, lever furniture, overhead door closer, perko door closer. Gerda lock change - excluding work to additional doors, door replacement, re-hang on opposite way, replace threshold. Make good decorations restricted to Primed'
 )
