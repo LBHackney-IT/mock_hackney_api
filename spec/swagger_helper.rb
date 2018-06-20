@@ -79,9 +79,18 @@ RSpec.configure do |config|
         work_order: {
           type: :object,
           properties: {
-            sorCode: { type: :string, required: true },
+            sorCode: { type: :string, example: '20040020' },
             supplierReference: { type: :string, example: 'W1' },
-            workOrderReference: { type: :string },
+            workOrderReference: { type: :string, exmaple: '01234567' },
+            estimatedCost: { type: :double, example: 10.50 },
+            repairType: { type: :string, example: 'Community Hall Repairs' },
+            status: { type: :string, example: 'Completed' },
+            dueDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            expectedCompletion: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            attendedDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            attendedBy: { type: :string, example: 'Geoff Smith' },
+            outcome: { type: :string, example: 'Job Physically Complete' },
+            cancelledDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
           },
         },
         appointment: {

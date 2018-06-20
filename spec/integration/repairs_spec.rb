@@ -3,7 +3,7 @@ require 'swagger_helper'
 describe 'repairs API' do
   path '/repairs' do
     post 'Creates a repair' do
-      tags 'Repairs'
+      tags 'Changed'
       consumes 'application/json'
       parameter name: :repair, in: :body, schema: {
         "$ref": '#/definitions/repair_request'
@@ -31,8 +31,7 @@ describe 'repairs API' do
         }
         let(:repair_response) {
           repair_response = repair.dup
-          repair_response[:workOrders][0][:workOrderReference] = an_instance_of(String)
-          repair_response[:workOrders][0][:supplierReference] = "W1"
+          repair_response[:workOrders][0] = an_instance_of(Hash)
           repair_response[:repairRequestReference] = an_instance_of(String)
           repair_response[:priority] = "N"
           repair_response
@@ -72,7 +71,7 @@ describe 'repairs API' do
 
   path '/repairs/{repairRequestReference}' do
     get 'Retrieves a request' do
-      tags 'Repairs'
+      tags 'Changed'
       produces 'application/json'
       parameter name: :repairRequestReference, :in => :path, :type => :string
 

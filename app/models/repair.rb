@@ -27,13 +27,7 @@ class Repair < ApplicationRecord
         emailAddress: self.contact_emailAddress,
         callbackTime: self.contact_callbackTime,
       },
-      workOrders: work_orders.collect do |work_order|
-        {
-          workOrderReference: work_order.workOrderReference,
-          sorCode: work_order.sorCode,
-          supplierReference: work_order.supplierReference,
-        }
-      end
+      workOrders: work_orders
     }
   end
 

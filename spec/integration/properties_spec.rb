@@ -45,7 +45,7 @@ describe 'properties API' do
 
   path '/properties/{propertyReference}' do
     get 'Retrieves a property' do
-      tags 'Properties'
+      tags 'Changed'
       produces 'application/json'
       parameter name: :propertyReference, :in => :path, :type => :string
 
