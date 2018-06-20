@@ -1,6 +1,7 @@
 class WorkOrder < ApplicationRecord
   belongs_to :repair
   has_one :appointment
+  has_many :tasks
 
   before_validation :set_reference, on: :create
 
@@ -19,6 +20,7 @@ class WorkOrder < ApplicationRecord
       attendedBy: self.attendedBy,
       outcome: self.outcome,
       cancelledDate: self.cancelledDate,
+      tasks: self.tasks,
     }
   end
 

@@ -91,6 +91,24 @@ RSpec.configure do |config|
             attendedBy: { type: :string, example: 'Geoff Smith' },
             outcome: { type: :string, example: 'Job Physically Complete' },
             cancelledDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            tasks: {
+              type: :array,
+              items: {
+                "$ref": '#/definitions/task'
+              },
+            },
+          },
+        },
+        task: {
+          type: :object,
+          properties: {
+            sorCode: { type: :string, example: '20040020' },
+            dueDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            supplierReference: { type: :string, example: 'W1' },
+            estimatedCost: { type: :double, example: 10.50 },
+            trade: { type: :string, example: 'SW' },
+            completedDate: { type: :string, example: '2018-06-18T09:00:00Z', format: 'date-time' },
+            description: { type: :string, example: '12 mm bitumen impregnated brds: laid ,loose' },
           },
         },
         appointment: {

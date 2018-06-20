@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180620135433) do
+ActiveRecord::Schema.define(version: 20180620153308) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,20 @@ ActiveRecord::Schema.define(version: 20180620135433) do
     t.index ["dwelling_id"], name: "index_residents_on_dwelling_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "work_order_id"
+    t.string "sorCode"
+    t.datetime "dueDate"
+    t.string "supplierReference"
+    t.decimal "estimatedCost"
+    t.string "trade"
+    t.datetime "completedDate"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_order_id"], name: "index_tasks_on_work_order_id"
+  end
+
   create_table "work_orders", force: :cascade do |t|
     t.string "workOrderReference"
     t.string "sorCode"
@@ -88,5 +102,6 @@ ActiveRecord::Schema.define(version: 20180620135433) do
   end
 
   add_foreign_key "appointments", "work_orders"
+  add_foreign_key "tasks", "work_orders"
   add_foreign_key "work_orders", "repairs"
 end
