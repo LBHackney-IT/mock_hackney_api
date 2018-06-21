@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get :appointments, action: :show_appointment
         post :appointments, action: :create_appointment
       end
+      resources :notes, only: [:index, :create]
     end
     get '/properties/:id', to: 'properties#show'
     get '/properties', to: 'properties#find'

@@ -118,6 +118,21 @@ RSpec.configure do |config|
             endDate: { type: :string, example: '2018-06-18T10:00:00Z', format: 'date-time' },
           },
         },
+        note: {
+          type: :object,
+          properties: {
+            created: { type: :string },
+            user: { type: :string },
+            text: { type: :string }
+          },
+        },
+        note_request: {
+          type: :object,
+          properties: {
+            user: { type: :string },
+            text: { type: :string }
+          },
+        },
       }
     }
   }

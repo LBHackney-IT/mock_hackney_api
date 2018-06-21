@@ -201,3 +201,8 @@ task4 = Task.create!(
   dueDate: 5.days.ago,
   description: 'Repair/ease and adjust any door, ease furniture, oil locks, hinges, leave in working order including replacement [straight swap not requiring repair to door] of up to two of the following. Incliuding take off/refix door if required. Medium steel butt hinges, rim latch, mortice latch, rebated mortice latch, night latch, mortice dead lock, lever furniture, overhead door closer, perko door closer. Gerda lock change - excluding work to additional doors, door replacement, re-hang on opposite way, replace threshold. Make good decorations restricted to Primed'
 )
+Note.create!(
+  target: work_order1,
+  user: 'USER1',
+  text: 'Tenant rang for update',
+)

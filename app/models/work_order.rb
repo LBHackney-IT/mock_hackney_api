@@ -2,6 +2,7 @@ class WorkOrder < ApplicationRecord
   belongs_to :repair
   has_one :appointment
   has_many :tasks
+  has_many :notes, as: :target
 
   before_validation :set_reference, on: :create
 
