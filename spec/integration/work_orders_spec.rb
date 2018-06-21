@@ -71,8 +71,7 @@ describe 'work_order API' do
         }
         run_test! do |response|
           expect(JSON.parse(response.body)).to match(note_response)
-          note = Note.last
-          expect(note.text).to eq("Note contents")
+          expect(work_order.notes.last.text).to eq("Note contents")
         end
       end
 

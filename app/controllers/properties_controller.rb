@@ -1,6 +1,6 @@
 class PropertiesController < ApplicationController
-  before_action :find_property, except: [:find]
-  def find
+  before_action :find_property, except: [:index]
+  def index
     postcode = Property.format_postcode(params[:postcode])
     if postcode.length > 7
       render status: :bad_request

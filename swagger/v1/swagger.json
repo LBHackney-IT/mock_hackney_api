@@ -434,6 +434,79 @@
         }
       }
     },
+    "/properties/{propertyReference}/notes": {
+      "get": {
+        "summary": "Retrieves notes for a property",
+        "tags": [
+          "Proposed"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "property found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "results": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/note"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "property not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Creates an note for the property",
+        "tags": [
+          "Proposed"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "propertyReference",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "note",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/note_request"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "note created",
+            "schema": {
+              "$ref": "#/definitions/note"
+            }
+          },
+          "422": {
+            "description": "invalid request"
+          }
+        }
+      }
+    },
     "/repairs": {
       "post": {
         "summary": "Creates a repair",

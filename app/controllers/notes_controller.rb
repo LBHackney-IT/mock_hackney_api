@@ -1,11 +1,11 @@
 class NotesController < ApplicationController
-  before_action :set_work_order
+  before_action :find_target
   def index
-    render json: {items: @work_order.notes.order('created_at DESC')}
+    render json: {items: @target.notes.order('created_at DESC')}
   end
 
   def create
-    @note = @work_order.notes.build(note_params)
+    @note = @target.notes.build(note_params)
     if @note.save
       render json: @note
     else
@@ -14,8 +14,13 @@ class NotesController < ApplicationController
   end
   private
 
-  def set_work_order
-    unless @work_order = WorkOrder.find_by_workOrderReference(params[:work_order_id])
+  def find_target
+    if params[:work_order_id]
+      @target = WorkOrder.find_by_workOrderReference(params[:work_order_id])
+    else params[:property_id]
+      @target = Property.find_by_propertyReference(params[:property_id])
+    end
+    unless @target
       render status: :not_found
     end
   end

@@ -1,6 +1,7 @@
 class Dwelling < Property
   belongs_to :sub_block, foreign_key: 'parentReference', primary_key: 'propertyReference'
   has_many :residents
+  has_many :notes, as: :target
 
   def as_json(*)
     super.merge({
